@@ -14,6 +14,15 @@ const Banner = ({ url }) => {
 		};
 		fetchMovies();
 	}, [url]);
+
+	const truncate = (str, max, suffix) =>
+		str.length < max
+			? str
+			: `${str.substr(
+					0,
+					str.substr(0, max - suffix.length).lastIndexOf(' ')
+			  )}${suffix}`;
+
 	return (
 		<div className='flex flex-col space-y-2 py-16 md:space-y-4 lg:h-[65vh] lg:justify-end lg:pb-12'>
 			<div className='absolute top-0 left-0 -z-10 h-[95vh] w-screen  '>
@@ -30,7 +39,7 @@ const Banner = ({ url }) => {
 				{tranding.title || tranding.name || tranding.original_name}
 			</h1>
 			<p className='max-w-xs text-sm md:max-w-lg md:text-lg lg:max-w-2xl lg:text-2xl'>
-				{tranding.overview}
+				{tranding.overview && truncate(tranding.overview, 200, '...')}
 			</p>
 			<div className='flex items-center space-x-2'>
 				<button className='flex items-center rounded bg-white px-5 py-1 text-black transition hover:bg-gray-200 md:px-7 md:py-2 md:text-lg'>
