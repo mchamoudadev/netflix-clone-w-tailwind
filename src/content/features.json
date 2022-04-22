@@ -1,0 +1,29 @@
+[
+	{
+		"id": 1,
+		"title": "Enjoy on your TV.",
+		"description": "Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.",
+		"image": "tv.png",
+		"alt": "Enjoy on your TV.",
+		"video": "watch.m4v",
+		"direction": "row"
+	},
+	{
+		"id": 2,
+		"title": "Download your shows to watch offline.",
+		"description": "Save your favorites easily and always have something to watch.",
+		"image": "download.jpeg",
+		"alt": "Download your shows to watch offline.",
+		"video": "",
+		"direction": "row-reverse"
+	},
+	{
+		"id": 3,
+		"title": "Create profiles for kids.",
+		"description": "Send kids on adventures with their favorite characters in a space made just for them—free with your membership.",
+		"image": "kids.png",
+		"alt": "Create profiles for kids.",
+		"video": "",
+		"direction": "row"
+	}
+]
