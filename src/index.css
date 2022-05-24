@@ -12,4 +12,11 @@
 	.link-style {
 		@apply px-2 transition-all hover:text-gray-300;
 	}
+	.form-control {
+		@apply w-full rounded-lg bg-[#3a3a3a] py-5 px-2 text-xs text-white outline-none;
+	}
+
+	.btn {
+		@apply mt-10 w-full rounded-lg bg-[#e50914] py-4 px-4 text-white;
+	}
 }

@@ -2,7 +2,7 @@ const Feature = ({ title, description, image, video, id }) => {
 	return (
 		<div
 			className={`relative mx-auto flex max-w-screen-lg flex-col items-center justify-center ${
-				id % 2 != 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'
+				id % 2 !== 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'
 			} space-y-4`}>
 			<div className='mt-12 flex-1 space-y-4 tracking-wider'>
 				<h1 className='max-w-lg text-center text-4xl font-bold sm:text-5xl'>
