@@ -1,11 +1,11 @@
-import React from 'react';
 import { Helmet } from 'react-helmet';
 import Banner from '../components/Banner';
 import Header from '../components/browse/Header';
+import MovieModal from '../components/MovieModal';
 import Row from '../components/Row';
 import requests from '../request';
 
-export const Browse = () => {
+const Browse = () => {
     return (
         <>
             <Helmet>
@@ -26,7 +26,10 @@ export const Browse = () => {
                 </main>
 
             </div>
+
+            <MovieModal />
         </>
     );
 };
 
+export default Browse;

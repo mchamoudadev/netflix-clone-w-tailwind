@@ -13,10 +13,13 @@
 		@apply px-2 transition-all hover:text-gray-300;
 	}
 	.form-control {
-		@apply w-full rounded-lg bg-[#3a3a3a] py-5 px-2 text-xs text-white outline-none;
+		@apply w-full rounded-lg bg-[#3a3a3a] py-5 px-2 text-lg text-white outline-none;
 	}
 
 	.btn {
 		@apply mt-10 w-full rounded-lg bg-[#e50914] py-4 px-4 text-white;
+	}
+	.modal-btn {
+		@apply flex h-11 w-11 items-center justify-center rounded-full border-2 border-[gray] bg-[#2a2a2a]/60 transition hover:border-white hover:bg-white/10;
 	}
 }
