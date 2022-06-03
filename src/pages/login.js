@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import { useForm } from 'react-hook-form';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
 import { auth } from '../misc/firebase';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
@@ -14,16 +15,18 @@ const Login = () => {
     const { login } = useAuth();
     const navigate = useNavigate();
 
-    const onSubmit = data => {
+    const onSubmit = async (data) => {
 
-        const { email, password } = data;
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredentials) => {
-                login(userCredentials);
-                navigate('/browse');
-            }).catch((error) => {
-                toast.error(error.message);
-            });
+        try {
+            const { email, password } = data;
+            const userCredentials = await signInWithEmailAndPassword(auth, email, password);
+            // custome hook that we created for login and register
+            login(userCredentials);
+            navigate('/browse');
+        } catch (error) {
+            toast.error(error.message);
+        }
+
     };
 
     return (

@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { HiBell } from "react-icons/hi";
 import { AiOutlineSearch } from "react-icons/ai";
+import useAuth from "../../context/AuthContext";
 
 const Header = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
+	const { logout } = useAuth();
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -55,6 +57,7 @@ const Header = () => {
 				<HiBell className="h-6 w-6 cursor-pointer" />
 				<AiOutlineSearch className="h-6 w-6 cursor-pointer" />
 				<img
+					onClick={logout}
 					src="./images/logo/profile.png"
 					alt=""
 					className="w-[40px] cursor-pointer rounded"

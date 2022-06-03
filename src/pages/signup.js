@@ -1,8 +1,8 @@
 import { useState } from 'react';
-
 import { useForm } from 'react-hook-form';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../misc/firebase';
+import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { auth, db } from '../misc/firebase';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -11,16 +11,25 @@ const SignUp = () => {
     // for useform validation
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const navigate = useNavigate();
-    const onSubmit = data => {
 
-        const { email, password } = data;
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredentials) => {
-                toast.success("Succeccfully registred");
-                navigate("/login");
-            }).catch((error) => {
-                toast.error(error.message);
-            });
+    const onSubmit = async data => {
+
+        try {
+            const { email, password } = data;
+            const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
+
+            await setDoc(doc(db, "users", userCredentials.user.uid),
+                {
+                    email: userCredentials.user.email,
+                    name: userCredentials.user.displayName,
+                    timestamp: serverTimestamp()
+
+                });
+            toast.success("Succeccfully registred");
+            // navigate("/login");
+        } catch (error) {
+            toast.error(error.message);
+        }
     };
 
     return (
@@ -43,7 +52,7 @@ const SignUp = () => {
                 </label>
                 <button className="btn">Sign Up</button>
                 <div className="flex flex-row space-x-2 my-4">
-                    <p className="text-[#8d8d8d] text-lg">New to netflix ?</p> <Link className="hover:underline" to="/signin" >SignIn now</Link>
+                    <p className="text-[#8d8d8d] text-lg">New to netflix ?</p> <Link className="hover:underline" to="/login" >SignIn now</Link>
                 </div>
 
             </form>

@@ -8,11 +8,16 @@ export const AuthContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(AuthReducer, initialState);
 
     useEffect(() => {
-        window.localStorage.setItem('user_auth', JSON.stringify(state.user));
-        console.log("chcnged");
+        if (state.user === null) {
+            window.localStorage.setItem("user_auth", "");
+        } else {
+            window.localStorage.setItem('user_auth', JSON.stringify(state.user));
+        }
+
     }, [state.user]);
 
     const login = (user) => {
+
         dispatch({
             type: 'LOGIN',
             payload: user

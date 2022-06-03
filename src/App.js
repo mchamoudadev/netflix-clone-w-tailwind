@@ -1,3 +1,4 @@
+import List from '../src/pages/list';
 import { BrowserRouter, Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import useAuth from './context/AuthContext';
 import Browse from './pages/browse';
@@ -29,6 +30,12 @@ function App() {
           path="/browse"
           element={
             <RequireAuth><Browse /></RequireAuth>
+          }
+        />
+        <Route
+          path="/my-list"
+          element={
+            <RequireAuth><List /></RequireAuth>
           }
         />
         <Route path="/login" element={<Login />} />
